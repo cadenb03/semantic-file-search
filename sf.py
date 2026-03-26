@@ -45,7 +45,7 @@ def main(stdscr):
     curses.use_default_colors()
     curses.curs_set(0)
     stdscr.timeout(100)
-    curses.init_pair(1, -1, curses.COLOR_BLUE)
+    curses.init_pair(1, 16, 12)
     curses.init_pair(2, curses.COLOR_WHITE, -1)
     curses.init_pair(3, -1, curses.COLOR_BLACK)
     # stdscr.nodelay(0)
@@ -70,8 +70,10 @@ def main(stdscr):
             y = 2 + i
             if i == current_row:
                 stdscr.attron(curses.color_pair(1))
+                stdscr.attron(curses.A_BOLD)
                 stdscr.addstr(y, x, f"> {f}")
                 stdscr.attroff(curses.color_pair(1))
+                stdscr.attroff(curses.A_BOLD)
             else:
                 if i % 2 == 0:
                     stdscr.attron(curses.color_pair(2))
